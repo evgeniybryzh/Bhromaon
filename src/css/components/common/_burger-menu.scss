@@ -56,6 +56,9 @@
   &__pages-name {
     @include transition-basic;
     opacity: 1;
+    &:hover {
+      border-bottom: 2px solid $main-text-color;
+    }
 
     @include font($base-font, 30px, 300, $main-text-color);
 
