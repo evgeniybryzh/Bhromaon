@@ -5,50 +5,66 @@
   background-color: $icon-box-bg-color;
   padding: 0px 10px;
   text-align: center;
-  @include flex-main;
+  @include flex-main(column);
+
   &__list {
-    width: 987px;
+    width: auto;
 
     @include flex-main(row, space-between);
+
+    @include media-q(640px) {
+      width: 650px;
+
+      @include flex-main(row, space-between);
+    }
+
+    @include media-q(793px) {
+      width: 787px;
+
+      @include flex-main(row, space-between);
+    }
+    @include media-q(993px) {
+      width: 987px;
+
+      @include flex-main(row, space-between);
+    }
   }
   &__items {
     @include flex-main(column, space-between, center);
+    margin-bottom: 0px;
+    @include media-q($desktop-small) {
+      margin-bottom: 109px;
+      padding-left: 5px;
+    }
+
+    &:not(:last-of-type) {
+      border-right: 1px solid grey;
+      @include media-q($tablet-small) {
+        border-right: none;
+      }
+    }
   }
   &__icon-name {
-    @include font($base-font, 36px, 300, $main-text-color);
+    @include font($base-font, 26px, 300, $main-text-color);
+    @include media-q($phone) {
+      @include font($base-font, 36px, 300, $main-text-color);
+    }
   }
   &__icons {
-    margin-bottom: 30px;
+    background-color: $icon-box-bg-color;
+    margin-bottom: 15px;
+    z-index: 200;
+
+    @include media-q($phone) {
+      margin-bottom: 30px;
+    }
   }
   &__lines {
     display: none;
-    position: absolute;
-    width: 350px;
-    height: 120px;
-    border-top: 2px dotted $border-line-dots-color;
-    border-radius: 50%;
-    border-width: 70%;
-    left: 23.5%;
-    bottom: 50%;
 
-    @include media-q(1200px) {
+    @include media-q(993px) {
       display: block;
-      width: 350px;
-      left: 23.5%;
+      transform: translateY(50px);
     }
-    @include media-q(1700px) {
-      display: block;
-      width: 350px;
-      left: 30.5%;
-    }
-    @include media-q(2100px) {
-      width: 350px;
-      display: none;
-      left: 30.5%;
-    }
-  }
-  &__lines:last-of-type {
-    left: 51.5%;
-    bottom: 50%;
   }
 }
